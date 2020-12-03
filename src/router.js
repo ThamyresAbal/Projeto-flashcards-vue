@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HelloWorld from './components/HelloWorld';
+import ListaCards from './components/ListaCards';
 
 Vue.use(VueRouter);
 
@@ -9,8 +9,8 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
-            name: 'hello',
-            component: HelloWorld
+            name: 'lista',
+            component: ListaCards
         }
     ]
 }

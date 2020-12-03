@@ -1,0 +1,19 @@
+{
+    "flashcard": [
+        {
+        "id": 1,
+        "pergunta": "hello",
+        "resposta": "infnet"
+        },
+        {
+        "id": 2,
+        "pergunta": "digdin",
+        "resposta": "teste"
+        },
+        {
+        "id": 3,
+        "pergunta": "dressa",
+        "resposta": "oioioioioi"
+        }
+    ]
+}

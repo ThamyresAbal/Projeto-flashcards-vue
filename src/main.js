@@ -9,6 +9,8 @@ import{
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(store)
+
 Vue.config.productionTip = false
 
 new Vue({

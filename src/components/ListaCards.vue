@@ -1,33 +1,26 @@
 <template>
   <b-row>
-    <h1>{{titulo}}<hr></h1>
+    <h1>{{titulo}}</h1>
+    <hr>
     <b-row>
+    <b-row class="novo">
+      <b-button href="#" variant="primary">{{novo}}</b-button>
+    </b-row>
     <b-form-input type="text" id="text-search" v-model="search"
       placeholder="Busca ..."
       v-on:keyup.enter="onEnter"
       >
-      
       </b-form-input>
+      
       <b-card-group deck>
-        <b-card 
+      <b-card 
           v-for="flashcards in allCards"
             :key="flashcards.id"
             header-tag="header"
-            :header="flashcards.pergunta"
+            :header="flashcards.categoria"
           >
-          <b-button href="#" variant="primary">Resposta</b-button>
-          <hr>
-          <b-row class="buttom">
-            <b-button href="#" variant="outline-danger">
-              <b-icon icon="trash"  @click="deleteCard(flashcards.id)"></b-icon>
-              Deletar
-            </b-button>
-            <b-button href="#" variant="outline-ligth">
-              <b-icon icon=""  @click="alterarCard(flashcards.id)"></b-icon>
-              Editar
-            </b-button>
-          </b-row>
-        </b-card>
+      </b-card>
+      
       </b-card-group>
     </b-row>
   </b-row>   
@@ -45,10 +38,12 @@ export default {
     data(){
         return {
             titulo:"FLASHCARDS - VUE",
+            novo:"NOVO CARD",
             search : "",
             result : null
             }
     },
+    //todos os cards
     computed: mapGetters(["allCards"]),
     methods: {
         ...mapActions(["getAllCards"]),
@@ -70,8 +65,13 @@ h1 {
     max-width: 800px;
     margin: 0 auto;
 }
+novo{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
 .card{
-    border-color: violet;
+    margin-top: 25px;
+    border-color: #4fc08c;
     transition: transform .5s;
     display: flex;
     align-items: center;

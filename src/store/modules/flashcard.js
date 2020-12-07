@@ -25,7 +25,8 @@ const actions = {
             "http://localhost:3000/flashcard", {
                 "id": card.id,
                 "pergunta": card.pergunta,
-                "resposta": card.resposta
+                "resposta": card.resposta,
+                "categoria": card.categoria
             }
         ).then((response)=>{
             commit('addCard', card)
@@ -36,7 +37,8 @@ const actions = {
         axios.post(
             "http://localhost:3000/flashcard/?id="+ card.id, {
                 "pergunta": card.pergunta,
-                "resposta": card.resposta
+                "resposta": card.resposta,
+                "categoria": card.categoria
             }
         ).then((response)=>{
             commit('addCard', card)

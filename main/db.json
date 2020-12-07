@@ -3,17 +3,20 @@
         {
         "id": 1,
         "pergunta": "hello",
-        "resposta": "infnet"
+        "resposta": "infnet",
+        "categoria": "VUE"
         },
         {
         "id": 2,
         "pergunta": "digdin",
-        "resposta": "teste"
+        "resposta": "teste",
+        "categoria": "história"
         },
         {
         "id": 3,
         "pergunta": "dressa",
-        "resposta": "oioioioioi"
+        "resposta": "oioioioioi",
+        "categoria": "português"
         }
     ]
 }

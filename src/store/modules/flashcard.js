@@ -7,14 +7,14 @@ const getters = {allCards: state => state.flashcard};
 const actions = {
     getAllCards({commit}){
         axios.get(
-            "https://my-json-server.typicode.com/ThamyresAbal/Projeto-flashcards-vue"
+            "http://localhost:3000/flashcard"
         ).then((response)=>{
             commit('getListaCard', response.data)
         })
     },
     deleteCard({commit}, id){
         axios.delete(
-            "https://my-json-server.typicode.com/ThamyresAbal/Projeto-flashcards-vue/?id="+id
+            "http://localhost:3000/flashcard/?id="+id
         ).then((response)=>{
             commit('deleteCard', id)
             console.log(response)
@@ -22,7 +22,7 @@ const actions = {
     },
     addCard({commit}, card){
         axios.post(
-            "https://my-json-server.typicode.com/ThamyresAbal/Projeto-flashcards-vue", {
+            "http://localhost:3000/flashcard", {
                 "id": card.id,
                 "pergunta": card.pergunta,
                 "resposta": card.resposta
@@ -34,7 +34,7 @@ const actions = {
     },
     editCard({commit}, card){
         axios.post(
-            "https://my-json-server.typicode.com/ThamyresAbal/Projeto-flashcards-vue/?id="+ card.id, {
+            "http://localhost:3000/flashcard/?id="+ card.id, {
                 "pergunta": card.pergunta,
                 "resposta": card.resposta
             }

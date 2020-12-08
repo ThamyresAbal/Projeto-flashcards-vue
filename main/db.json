@@ -2,19 +2,19 @@
     "flashcard": [
         {
         "id": 1,
-        "pergunta": "hello",
+        "titulo": "hello",
         "resposta": "infnet",
         "rotulo": "AT - VUE"
         },
         {
         "id": 2,
-        "pergunta": "digdin",
+        "titulo": "digdin",
         "resposta": "teste",
         "rotulo": "AT - VUE"
         },
         {
         "id": 3,
-        "pergunta": "dressa",
+        "titulo": "dressa",
         "resposta": "oioioioioi",
         "rotulo": "AT - VUE"
         }

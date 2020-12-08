@@ -1,13 +1,15 @@
 <template>
-<b-row>
-    <b-row><h2>Edição</h2></b-row>
-        <b-row>
+    <b-row class="container">
+        <h1>{{titulo}}<hr></h1>
+        <b-row> 
+        <hr>
+        <h3>Editar</h3>
+        <div class="detalhe">
             <b-form @submit="onSubmit">
                 <b-form-group
                 id="input-group-1"
                 label="Texto:"
                 label-for="input-1"
-                description="Digite aqui o texto do flash card"
             >
                 <b-form-input
                 id="input-1"
@@ -19,36 +21,31 @@
             </b-form-group>
             <b-form-group
                 id="input-group-1"
-                label="username:"
+                label="Resposta:"
                 label-for="input-1"
-                description="We'll never share your username with anyone else."
             >
-            </b-form-group>
-            <b-form-group
-                id="input-group-1"
-                label="username:"
-                label-for="input-1"
-                description="We'll never share your username with anyone else."
-            >
-                <b-form-input
+             <b-form-input
                 id="input-1"
                 v-model="Card.resposta"
-                type="email"
+                type="name"
                 required
-                placeholder="Enter email"
+                placeholder="Digite aqui a resposta do flashcard"
                 ></b-form-input>
             </b-form-group>
-            <b-form-group id="input-group-3" label="Company Name:" label-for="input-3">
+            <b-form-group id="input-group-3" label="Categoria" label-for="input-3">
                 <b-form-select
                 id="input-3"
                 v-model="Card.rotulo"
-                :options="companies"
+                :options="categorias"
                 required
                 ></b-form-select>
             </b-form-group>
-            <b-button type="submit" variant="primary">Submit</b-button>
+
+            <b-button type="submit" variant="primary"><a @click=$router.lista(-1)>Salvar</a></b-button>
+           
             </b-form>
-        </b-row>
+        </div>
+    </b-row>
   </b-row>
 </template>
 
@@ -56,12 +53,12 @@
 import {mapActions, mapGetters} from "vuex"
 
 export default {
-    name: 'DetalheCard',
-    titulo:"FLASHCARDS - VUE",
+    name: 'DetalheCard',    
     
     computed: mapGetters(["allCards"]),
     data(){
         return{
+            titulo:"FLASHCARDS - VUE",
             flashcards:this.$route.params.Card,
             categorias: ['T.I.' , 'História', 'Geografia', 'Matemática','Programação' ],
         Card:{
@@ -70,20 +67,20 @@ export default {
             resposta: '',
             rotulo: ''
         }
-
-         }
-
+        }
     }, 
     methods:{
         ...mapActions(["getAllCards"]),
+        created(){
+        this.Card.push(this.flashcards)
+    },
       onSubmit(evt) {
         evt.preventDefault()
         alert(JSON.stringify(this.Card))
+        this.created()
       },
     }, 
-    created(){
-        this.flashcards.push(this.Card)
-    }
+   
 }
 </script>
 

@@ -1,34 +1,23 @@
 <template>
   <b-row class="container">
-    <b-row>
-        <h1>{{titulo}}</h1>
-    </b-row>
-        <b-row>
-        <h3>Editar</h3>
-           <div>
-               <span><b>Texto</b></span>
-               <span>{{flashcards.titulo}}</span>
-           </div>
-
-           <div>
-               <span><b>Resposta:</b></span>
-               <span>{{flashcards.resposta}}</span>
-           </div>
-
-           <div>
-               <span><b>Categoria:</b></span>
-               <span>{{flashcards.rotulo}}</span>
-           </div>
-        </b-row>
+    <h1>{{titulo}}<hr></h1>
+    <b-row> 
+      <h3>Detalhe</h3>
+      <div class="detalhe">
+        <ul>
+          <li><b>Texto:</b> {{flashcards.titulo}}</li>
+          <li><b>Resposta:</b> {{flashcards.resposta}}</li>
+          <li><b>Categoria:</b> {{flashcards.rotulo}}</li>
+        </ul>
         <router-link tag="p" :to="{ name: 'editarCard', params: { id: flashcards.id , flashcards: flashcards} }">
             <b-button variant="outline-primary">
             <b-icon icon="pencil-square" variant="info"></b-icon>
             Editar</b-button>
-         </router-link>
-      
-  </b-row>
+        </router-link>
+      </div>
+      </b-row>
+    </b-row>
 </template>
-
 
 <script>
 import {mapActions, mapGetters} from "vuex"
@@ -53,26 +42,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
-h1, h3 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    letter-spacing: .2em;
-    color: #996ce2;
-    display: block;
+li{
+  font-size: 1.1em;
+  text-decoration: none;
 }
-.container {
-    max-width: 800px;
-    margin: 0 auto;
+.detalhe{
+  margin-top: 50px;
+  display: absolute;
+  text-decoration: none;
 }
-novo{
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-.botoes{
-  display: inline-block;
-  padding: 2rem;
-  width: 200px;
-}
+
 </style>

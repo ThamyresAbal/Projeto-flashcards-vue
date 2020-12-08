@@ -1,18 +1,11 @@
 <template>
   <b-row class="container">
-    <h1>{{titulo}}</h1>
-    <hr>
+    <h1>{{titulo}}<hr></h1>
     <b-row>
-      <b-row class="novo">
-    <!--
-      <router-link tag="p" :to="{ name: 'NovoCard', params: { id: flashcards.id } }">
+      <router-link tag="p" :to="{ name: 'addNovoCard' }">
         <b-button variant="success">Novo Card</b-button>
       </router-link>
-      !-->
-      </b-row>
-    
       <b-card-group deck>
-      
         <b-card 
           v-for="flashcards in allCards"
             :key="flashcards.id"
@@ -22,17 +15,17 @@
           <h6>{{flashcards.rotulo}}</h6>
           <b-button variant="primary">{{flashcards.resposta}}</b-button>
           <hr>
-          <b-row class="botoes">
-            <b-button variant="outline-danger"> 
+          <div class="btn-group" role="group">
+            <b-button type="button" variant="outline-danger"> 
               <b-icon-trash2 @click="deleteCard(flashcards.id)"></b-icon-trash2>
               Deletar
             </b-button>
             <router-link tag="p" :to="{ name: 'detalheCard', params: { id: flashcards.id , flashcards: flashcards} }">
-              <b-button variant="outline-primary">
+              <b-button type="button" variant="outline-primary">
                <b-icon icon="pencil-square" variant="info"></b-icon>
               Editar</b-button>
             </router-link>
-          </b-row>
+          </div>
         </b-card>
       </b-card-group>
     </b-row>
@@ -53,7 +46,8 @@ export default {
     data(){
         return {
           titulo:"FLASHCARDS - VUE",
-          result : null
+          result : null,
+          
         }
     },
     //todos os cards
@@ -97,29 +91,28 @@ export default {
 
 h1 {
     font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    letter-spacing: .2em;
     color: #996ce2;
+    margin-top: 50px;
+    text-align: center;
+    margin-inline-start: 50px;
 }
 .container {
     max-width: 800px;
-    margin: 0 auto;
+    justify-content: center;
 }
-novo{
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-.botoes{
-  display: inline-block;
-  padding: 2rem;
-  width: 200px;
+
+.btn-group{
+  position: relative;
+  bottom: -40px !important;
+  text-align: center;
+  height: 60px;
 }
 .card{
     margin-top: 25px;
     border-color: #4fc08c;
     transition: transform .5s;
     text-align: center;
-    width: 200px;
+    width: 300px;
     height: 300px;
     padding-top: 20px;
     border-radius: 10px;

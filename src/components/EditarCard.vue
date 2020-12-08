@@ -1,6 +1,6 @@
 <template>
     <b-row class="container">
-        <h1>{{titulo}}<hr></h1>
+        <h1>{{nomePagina}}<hr></h1>
         <b-row> 
         <hr>
         <h3>Editar</h3>
@@ -41,7 +41,7 @@
                 ></b-form-select>
             </b-form-group>
 
-            <b-button type="submit" variant="primary"><a @click=$router.lista(-1)>Salvar</a></b-button>
+            <b-button type="submit" variant="outline-primary"><a @click=criar() $router.lista(-1)>Salvar</a></b-button>
            
             </b-form>
         </div>
@@ -58,11 +58,11 @@ export default {
     computed: mapGetters(["allCards"]),
     data(){
         return{
-            titulo:"FLASHCARDS - VUE",
+            nomePagina:"FLASHCARDS - VUE",
             flashcards:this.$route.params.Card,
             categorias: ['T.I.' , 'História', 'Geografia', 'Matemática','Programação' ],
         Card:{
-            id: this.$route.params.id,
+            id: '',
             titulo: '',
             resposta: '',
             rotulo: ''
@@ -71,13 +71,12 @@ export default {
     }, 
     methods:{
         ...mapActions(["getAllCards"]),
-        created(){
+        criar(){
         this.Card.push(this.flashcards)
     },
       onSubmit(evt) {
         evt.preventDefault()
         alert(JSON.stringify(this.Card))
-        this.created()
       },
     }, 
    

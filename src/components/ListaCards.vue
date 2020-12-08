@@ -1,17 +1,25 @@
 <template>
   <b-row class="container">
-    <h1>{{titulo}}<hr></h1>
+    <h1>{{nomePagina}}<hr></h1>
     <b-row>
       <router-link tag="p" :to="{ name: 'addNovoCard' }">
         <b-button variant="success">Novo Card</b-button>
       </router-link>
       <b-card-group deck>
-        <b-card 
+        <b-card        
           v-for="flashcards in allCards"
             :key="flashcards.id"
             header-tag="header"
-            :header="flashcards.titulo"
           >
+        <vue-flip v-model="flipped">
+          <template v-slot:front>
+                  
+                    <button v-on:click='this.flipped: false'> <b-icon icon="pencil-square" variant="info"></b-icon></button>
+                    <p>virar</p>
+                  
+          </template>
+          <template v-slot:back>
+            
           <h6>{{flashcards.rotulo}}</h6>
           <b-button variant="primary">{{flashcards.resposta}}</b-button>
           <hr>
@@ -26,6 +34,10 @@
               Editar</b-button>
             </router-link>
           </div>
+          </template>
+        </vue-flip> 
+      
+
         </b-card>
       </b-card-group>
     </b-row>
@@ -45,10 +57,10 @@ export default {
     
     data(){
         return {
-          titulo:"FLASHCARDS - VUE",
+          nomePagina:"FLASHCARDS - VUE",
           result : null,
-          
         }
+          
     },
     //todos os cards
     computed: mapGetters(["allCards"]),
@@ -100,7 +112,10 @@ h1 {
     max-width: 800px;
     justify-content: center;
 }
-
+card:hover {
+  transform: scale(1.5);
+  transition: ease 0.5s;
+}
 .btn-group{
   position: relative;
   bottom: -40px !important;
@@ -117,11 +132,19 @@ h1 {
     padding-top: 20px;
     border-radius: 10px;
     border-width: 5px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    transform: scale(0.96);
+  transition: ease 0.5s;
 }
 .card:hover {
     transform: scale(1.1);
 }
-
+.card:nth-child(-n+3) .card{
+    background-color: #e65f51;
+    }
  
   .flip-enter-active {
     transition: all 0.4s ease;

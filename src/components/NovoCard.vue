@@ -1,6 +1,6 @@
 <template>
   <b-row class="container">
-    <h1>{{titulo}}<hr></h1>
+    <h1>{{nomePagina}}<hr></h1>
     <b-row> 
       <h3>Adicionar Card</h3>
       <div class="detalhe">
@@ -9,19 +9,25 @@
       <b-form-input
         id="inline-form-input-name"
         class="mb-4 mr-sm-4 mb-sm-0"
-        placeholder="Insira o título do card"
         v-model="titulo"
+        placeholder="Insira o título do card"
+        required
       ></b-form-input>
 
-      <label class="sr-only" for="inline-form-input-">Resposta</label>
-      <b-input-group prepend="@" class="mb-4 mr-sm-4 mb-sm-0">
+      <label class="sr-only" for="inline-form-input-name">Resposta</label>
         <b-form-input id="inline-form-input" 
-        v-model="email"
-        placeholder="Insira seu email"></b-form-input>
-      </b-input-group>
+        v-model="resposta"
+        placeholder="Insira a resposta"
+        required
+        ></b-form-input>
 
-      <b-button variant="primary" @click="createUser()">Save</b-button>
+      <label class="sr-only" for="inline-form-input-name">Categoria</label>
+        <b-form-select id="inline-form-input" 
+        v-model="rotulo"
+        :options="categorias"
+        required></b-form-select>
     </b-form>
+      <b-button variant="outline-primary" @click="criarCard()">Salvar</b-button>
       </div>
       </b-row>
     </b-row>
@@ -29,40 +35,30 @@
 
 <script>
 import { mapActions } from "vuex";
+
 export default {
-    name : 'AdicionarUsuario',
+    name : 'NovoCard',
     data(){
       return { 
-        titulo:"FLASHCARDS - VUE",
-        name : "", 
-        email: ""}
+        nomePagina:"FLASHCARDS - VUE",
+        categorias: ['T.I.' , 'História', 'Geografia', 'Matemática','Programação' ],
+        Card:{
+            titulo: '',
+            resposta: '',
+            rotulo: ''
+        }
+      }
     }, 
     methods:{
-      ...mapActions(["addUser"]),
-      createUser(){
-         let user = {
-          "name": this.name,
-          "username": "",
-          "email": this.email,
-          "address": {
-            "street": "",
-            "suite": "",
-            "city": "",
-            "zipcode": "",
-            "geo": {
-              "lat": "",
-              "lng": ""
-            }
-          },
-          "phone": "",
-          "website": "",
-          "company": {
-            "name": "",
-            "catchPhrase": "",
-            "bs": ""
-          }
+      ...mapActions(["getAllCards"]),
+      criarCard(){
+         let flashcards = {
+           "id": '',
+          "titulo": this.titulo,
+          "resposta": this.resposta,
+          "rotulo": this.rotulo,
         }
-        this.addUser(user)
+        this.addCard(flashcards)
         alert('Adicionado com sucesso!')
       }
     }

@@ -1,6 +1,6 @@
 <template>
   <b-row class="container">
-    <h1>{{titulo}}<hr></h1>
+    <h1>{{nomePagina}}<hr></h1>
     <b-row> 
       <h3>Detalhe</h3>
       <div class="detalhe">
@@ -28,7 +28,7 @@ export default {
     computed: mapGetters(["allCards"]),
     data(){
         return{
-            titulo:"FLASHCARDS - VUE",
+            nomePagina:"FLASHCARDS - VUE",
             flashcards:this.$route.params.flashcards,
          }
     }, 

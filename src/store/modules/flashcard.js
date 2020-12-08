@@ -24,9 +24,9 @@ const actions = {
         axios.post(
             "http://localhost:3000/flashcard", {
                 "id": card.id,
-                "pergunta": card.pergunta,
+                "titulo": card.titulo,
                 "resposta": card.resposta,
-                "categoria": card.categoria
+                "rotulo": card.rotulo
             }
         ).then((response)=>{
             commit('addCard', card)
@@ -36,9 +36,9 @@ const actions = {
     editCard({commit}, card){
         axios.post(
             "http://localhost:3000/flashcard/?id="+ card.id, {
-                "pergunta": card.pergunta,
+                "titulo": card.titulo,
                 "resposta": card.resposta,
-                "categoria": card.categoria
+                "rotulo": card.rotulo
             }
         ).then((response)=>{
             commit('addCard', card)

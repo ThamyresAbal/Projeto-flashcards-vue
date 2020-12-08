@@ -1,16 +1,15 @@
 <template>
-  <b-row>
+  <b-row class="container">
     <h1>{{titulo}}</h1>
     <hr>
-    <novo-card />
     <b-row>
-    <b-row class="novo">
+      <b-row class="novo">
     <!--
       <router-link tag="p" :to="{ name: 'NovoCard', params: { id: flashcards.id } }">
         <b-button variant="success">Novo Card</b-button>
       </router-link>
       !-->
-    </b-row>
+      </b-row>
     
       <b-card-group deck>
       
@@ -20,8 +19,8 @@
             header-tag="header"
             :header="flashcards.titulo"
           >
-          <p>flashcards.rotulo</p>
-          <b-button href="#" variant="primary">{{flashcards.resposta}}</b-button>
+          <h6>{{flashcards.rotulo}}</h6>
+          <b-button variant="primary">{{flashcards.resposta}}</b-button>
           <hr>
           <b-row class="botoes">
             <b-button variant="outline-danger"> 
@@ -42,20 +41,20 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex"
-import NovoCard from './NovoCard.vue'
+//im/[port NovoCard from './NovoCard.vue'
 
 export default {
     name: "ListaCards",
+    search: '',
     components:{
-       NovoCard
+      // NovoCard
     },
     
     data(){
         return {
-            titulo:"FLASHCARDS - VUE",
-            search : "",
-            result : null
-            }
+          titulo:"FLASHCARDS - VUE",
+          result : null
+        }
     },
     //todos os cards
     computed: mapGetters(["allCards"]),
@@ -95,6 +94,7 @@ export default {
 </script>
 
 <style>
+
 h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
@@ -119,7 +119,7 @@ novo{
     border-color: #4fc08c;
     transition: transform .5s;
     text-align: center;
-    width: 400px;
+    width: 200px;
     height: 300px;
     padding-top: 20px;
     border-radius: 10px;

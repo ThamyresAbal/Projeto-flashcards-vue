@@ -11,6 +11,7 @@ import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
 
 export default {
   name: 'App'
+  
 }
 </script>
 

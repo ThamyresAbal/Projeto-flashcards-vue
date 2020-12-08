@@ -62,7 +62,7 @@ export default {
     computed: mapGetters(["allCards"]),
     data(){
         return{
-            flashcards:this.$route.params.flashcards,
+            flashcards:this.$route.params.Card,
             categorias: ['T.I.' , 'História', 'Geografia', 'Matemática','Programação' ],
         Card:{
             id: this.$route.params.id,
@@ -78,11 +78,11 @@ export default {
         ...mapActions(["getAllCards"]),
       onSubmit(evt) {
         evt.preventDefault()
-        alert(JSON.stringify(this.flashcards))
+        alert(JSON.stringify(this.Card))
       },
     }, 
     created(){
-        this.flashcards.push(this.flashcards.id)
+        this.flashcards.push(this.Card)
     }
 }
 </script>

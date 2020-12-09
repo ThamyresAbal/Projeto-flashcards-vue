@@ -5,7 +5,7 @@
     <b-row>
       <b-card-group deck>
         <b-card 
-          v-for="flashcards in allCards"
+          v-for="flashcards in allCards" 
             :key="flashcards.id"
             header-tag="header"
             :header="flashcards.titulo"
@@ -70,11 +70,11 @@ export default {
 
 <style>
 h1 {
-    font-family: 'Poppins', sans-serif;
-    color: #996ce2;
-    margin-top: 50px;
-    text-align: center;
-    margin-inline-start: 50px;
+  font-family: 'Poppins', sans-serif;
+  color: #996ce2;
+  margin-top: 50px;
+  text-align: center;
+  margin-inline-start: 50px;
 }
 h6{
   border-color: #4fc08c;
@@ -82,47 +82,28 @@ h6{
   border-radius: 5px;
 }
 .container {
-    max-width: 800px;
-    justify-content: center;
+  max-width: 800px;
+  justify-content: center;
 }
 .btn-group{
   position: relative;
-  bottom: -40px !important;
+  bottom: -5px !important;
   text-align: center;
-  height: 60px;
+  height: 38px;
 }
 .card{
-    margin-top: 25px;
-    border-color: #4fc08c;
-    transition: transform .5s;
-    text-align: center;
-    width: 300px;
-    height: 300px;
-    padding-top: 20px;
-    border-radius: 10px;
-    border-width: 5px;
+  min-width: 15rem;
+  height: 0 auto;
+  margin-top: 25px;
+  border-color: #4fc08c;
+  transition: transform .5s;
+  text-align: center;
+  padding-top: 20px;
+  border-radius: 10px;
+  border-width: 5px;
 }
 .card:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
  
-  .flip-enter-active {
-    transition: all 0.4s ease;
-  }
-  
-  .flip-leave-active {
-    display: none;
-  }
-  
-  .flip-enter, .flip-leave {
-    transform: rotateY(180deg);
-    opacity: 0;
-  
-  }
-  
-  /* Form */
-  .flashcard-form{
-    position: relative;
-  }
-  
 </style>

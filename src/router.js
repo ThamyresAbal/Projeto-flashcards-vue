@@ -20,7 +20,7 @@ export default new VueRouter({
            component: DetalheCard
         },
         {
-            path:'/',
+            path:'/novoCard',
             name: 'addNovoCard',
             component: NovoCard
         },

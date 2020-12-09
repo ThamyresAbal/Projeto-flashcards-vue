@@ -1,6 +1,6 @@
 <template>
   <b-row class="container">
-    <h1>{{nomePagina}}<hr></h1>
+      <Header/>
     <b-row> 
       <h3>Detalhe</h3>
       <div class="detalhe">
@@ -21,13 +21,18 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex"
+import Header from './Header.vue'
 
 export default {
     name: 'DetalheCard',
     
     computed: mapGetters(["allCards"]),
+    components:{
+      Header
+    },
     data(){
         return{
+        
             nomePagina:"FLASHCARDS - VUE",
             flashcards:this.$route.params.flashcards,
          }

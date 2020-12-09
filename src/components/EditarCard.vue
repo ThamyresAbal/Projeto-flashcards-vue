@@ -1,12 +1,9 @@
 <template>
     <b-row class="container">
-        <h1>{{nomePagina}}<hr></h1>
-        <b-row> 
-        <hr>
-        <h3>Editar</h3>
+    <Header/>
         <div class="detalhe">
-            <b-form @submit="onSubmit">
-                <b-form-group
+        <b-form>
+            <b-form-group
                 id="input-group-1"
                 label="Texto:"
                 label-for="input-1"
@@ -14,7 +11,7 @@
                 <b-form-input
                 id="input-1"
                 v-model="Card.titulo"
-                type="name"
+                type="text"
                 required
                 placeholder="Digite aqui o texto do flash card"
                 ></b-form-input>
@@ -27,7 +24,7 @@
              <b-form-input
                 id="input-1"
                 v-model="Card.resposta"
-                type="name"
+                type="text"
                 required
                 placeholder="Digite aqui a resposta do flashcard"
                 ></b-form-input>
@@ -41,28 +38,32 @@
                 ></b-form-select>
             </b-form-group>
 
-            <b-button type="submit" variant="outline-primary"><a @click=criar() $router.lista(-1)>Salvar</a></b-button>
+            <b-button href="#" v-on:click="editarUmCard()" block variant="outline-primary">Salvar</b-button>
            
-            </b-form>
+        </b-form>
         </div>
     </b-row>
-  </b-row>
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex"
+import Header from './Header.vue'
 
 export default {
-    name: 'DetalheCard',    
+    name: 'EditarCard',    
     
     computed: mapGetters(["allCards"]),
+    components:{
+      Header
+    },
     data(){
         return{
             nomePagina:"FLASHCARDS - VUE",
-            flashcards:this.$route.params.Card,
+             subtitulo: "Editar",
+            flashcards:this.$route.params.flashcards,
             categorias: ['T.I.' , 'História', 'Geografia', 'Matemática','Programação' ],
         Card:{
-            id: '',
+            id: this.$route.params.id,
             titulo: '',
             resposta: '',
             rotulo: ''
@@ -70,16 +71,15 @@ export default {
         }
     }, 
     methods:{
-        ...mapActions(["getAllCards"]),
-        criar(){
-        this.Card.push(this.flashcards)
+        ...mapActions(["editCard"]),
+        editarUmCard() {
+            this.editCard(this.Card);
+            window.setTimeout(() => {
+                this.$router.push('/');
+            }, 1000);
+        },
     },
-      onSubmit(evt) {
-        evt.preventDefault()
-        alert(JSON.stringify(this.Card))
-      },
-    }, 
-   
+      
 }
 </script>
 

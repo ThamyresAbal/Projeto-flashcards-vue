@@ -1,43 +1,29 @@
 <template>
   <b-row class="container">
-    <h1>{{nomePagina}}<hr></h1>
+    <Header/>
+    <NovoCard/>
     <b-row>
-      <router-link tag="p" :to="{ name: 'addNovoCard' }">
-        <b-button variant="success">Novo Card</b-button>
-      </router-link>
       <b-card-group deck>
-        <b-card        
+        <b-card 
           v-for="flashcards in allCards"
             :key="flashcards.id"
             header-tag="header"
+            :header="flashcards.titulo"
           >
-        <vue-flip v-model="flipped">
-          <template v-slot:front>
-                  
-                    <button v-on:click='this.flipped: false'> <b-icon icon="pencil-square" variant="info"></b-icon></button>
-                    <p>virar</p>
-                  
-          </template>
-          <template v-slot:back>
-            
           <h6>{{flashcards.rotulo}}</h6>
           <b-button variant="primary">{{flashcards.resposta}}</b-button>
           <hr>
           <div class="btn-group" role="group">
             <b-button type="button" variant="outline-danger"> 
-              <b-icon-trash2 @click="deleteCard(flashcards.id)"></b-icon-trash2>
+              <b-icon-trash2 v-on:click="deletarCard(flashcards.id)"></b-icon-trash2>
               Deletar
             </b-button>
-            <router-link tag="p" :to="{ name: 'detalheCard', params: { id: flashcards.id , flashcards: flashcards} }">
+            <router-link tag="p" :to="{name: 'detalheCard', params: { id: flashcards.id , flashcards: flashcards} }">
               <b-button type="button" variant="outline-primary">
                <b-icon icon="pencil-square" variant="info"></b-icon>
-              Editar</b-button>
+              Detalhe</b-button>
             </router-link>
           </div>
-          </template>
-        </vue-flip> 
-      
-
         </b-card>
       </b-card-group>
     </b-row>
@@ -46,61 +32,43 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex"
-//im/[port NovoCard from './NovoCard.vue'
+import NovoCard from './NovoCard.vue'
+import Header from './Header.vue'
 
 export default {
-    name: "ListaCards",
-    search: '',
+  name: "ListaCards",
+  search: '',
+
     components:{
-      // NovoCard
+      NovoCard,
+      Header
     },
     
     data(){
         return {
-          nomePagina:"FLASHCARDS - VUE",
-          result : null,
+          titulo:"FLASHCARDS - VUE",
+          result : null
         }
-          
     },
     //todos os cards
-    computed: mapGetters(["allCards"]),
+    computed: mapGetters(["allCards"]),  
     methods: {
-        ...mapActions(["getAllCards"]),
-        onEnter: function() {
-          this.result = this.allCards.filter(x => x.titulo.includes(this.search))
-          if(this.result.length == 0){
-              this.result = this.allCards
-          }
-        }
+        ...mapActions(["getAllCards", "deleteCard"]),
+      deletarCard(id){
+        this.deleteCard(id);
+        window.setTimeout(() => {
+          this.getAllCards();
+        }, 1000);
+      }
     },
     created(){
-        this.getAllCards();
-        console.log(this.allCards)
-    },
-    toggleCard: function(card) {
-      card.flipped = !card.flipped;
-    },
-    addNew: function() {
-      if(!this.newFront || !this.newBack) {
-        this.error = true;
-      } else {
-        this.cards.push({
-          front: this.newFront,
-          back: this.newBack,
-          flipped: false
-        });
-        // set the field empty
-        this.newFront = '';
-        this.newBack = '';
-        // Make the warning go away
-        this.error= false;
-      }
+      this.getAllCards();
     }
 }
+
 </script>
 
 <style>
-
 h1 {
     font-family: 'Poppins', sans-serif;
     color: #996ce2;
@@ -108,13 +76,14 @@ h1 {
     text-align: center;
     margin-inline-start: 50px;
 }
+h6{
+  border-color: #4fc08c;
+  border: 2px;
+  border-radius: 5px;
+}
 .container {
     max-width: 800px;
     justify-content: center;
-}
-card:hover {
-  transform: scale(1.5);
-  transition: ease 0.5s;
 }
 .btn-group{
   position: relative;
@@ -132,19 +101,10 @@ card:hover {
     padding-top: 20px;
     border-radius: 10px;
     border-width: 5px;
-    cursor: pointer;
-    color: #fff;
-    font-weight: 600;
-    font-size: 20px;
-    transform: scale(0.96);
-  transition: ease 0.5s;
 }
 .card:hover {
     transform: scale(1.1);
 }
-.card:nth-child(-n+3) .card{
-    background-color: #e65f51;
-    }
  
   .flip-enter-active {
     transition: all 0.4s ease;

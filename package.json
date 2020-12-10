@@ -12,6 +12,7 @@
     "bootstrap": "4.5.3",
     "bootstrap-vue": "2.20.1",
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
     "hr-vue-grid-layout": "^2.3.10",
     "iconv": "^3.0.0",
     "node": "^15.3.0",

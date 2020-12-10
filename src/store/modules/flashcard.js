@@ -18,7 +18,8 @@ const actions = {
         axios.delete(
             "http://localhost:3000/flashcard/"+id,
             ).then((response) => {
-                commit('deleteCard', response.data.id);
+                console.log(commit + response)
+                //commit('deleteCard', response.data.id);
                 alert("Card excluido")
         })
     },
@@ -53,8 +54,9 @@ const mutations = {
     //pegar
     getListaCard: (state, data) => (state.flashcard = data), // puxar todos
     //delete
+    //deletaCard:(state, id)=>(state.flashcard = state.flashcard.filter(i => i.id != id)),
     //adicionar
-    addCard: (state, card)=>(state.flashcard = state.flashcard.push(card)), // add na lista
+    addCard:(state, card)=>(state.flashcard = state.flashcard.push(card)), // add na lista
     //editar
 }
 

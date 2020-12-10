@@ -3,7 +3,7 @@
     <Header />
     <div class="container">
       <h3>{{ subtitulo }}</h3>
-      <b-form>
+      <b-form @submit="onSubmit">
         <b-form-group id="input-group-1" label="Texto:" label-for="input-1">
           <b-form-input
             id="input-1"
@@ -16,7 +16,8 @@
         <b-form-group id="input-group-1" label="Resposta:" label-for="input-1">
           <b-form-input
             id="input-1"
-            v-model="Card.resposta"
+            v-model="flashcards.resposta"
+      value="flashcards.resposta"
             type="text"
             required
             placeholder="Digite aqui a resposta do flashcard"
@@ -74,7 +75,7 @@ export default {
   },
   methods: {
     ...mapActions(["editCard"]),
-    editarUmCard() {
+    onSubmit() {
       this.editCard(this.Card);
       this.voltarInicio()
     },

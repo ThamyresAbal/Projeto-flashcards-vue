@@ -32,7 +32,7 @@
       <b-form-group id="input-group-3" label="Categoria: " label-for="input-3">
         <b-form-select
           id="input-3"
-          v-model="Card.categoria"
+          v-model="Card.rotulo"
           :options="categorias"
           required
         ></b-form-select>
@@ -78,7 +78,7 @@ export default {
 }
 form {
   margin-top: 20px;
-  justify-content: space-between;
+  justify-content: space-around !important;
 }
 button {
   margin-top: 10px;

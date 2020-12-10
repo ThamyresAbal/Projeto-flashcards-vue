@@ -17,6 +17,7 @@
     "iconv": "^3.0.0",
     "node": "^15.3.0",
     "node-modules": "^1.0.1",
+    "normalize.css": "^8.0.1",
     "vue": "^2.6.11",
     "vue-awesome": "^4.1.0",
     "vue-flip": "^1.0.2",

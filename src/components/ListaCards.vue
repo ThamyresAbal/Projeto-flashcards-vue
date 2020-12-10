@@ -3,6 +3,7 @@
     <Header />
     <NovoCard />
     <b-row>
+    
       <b-card-group deck>
         <b-card
           v-for="flashcards in allCards"
@@ -10,16 +11,26 @@
           header-tag="header"
           :header="flashcards.titulo"
         >
-          <h6>{{ flashcards.rotulo }}</h6>
-          <transition 
-          :key="flashcards.id"
-          name="fade">
+          <b-card-sub-title>{{ flashcards.rotulo }}</b-card-sub-title>
+          <hr />
+          <div class="card-body-fixo">
+          <b-card-body class="overflow-auto">
+            <transition :key="flashcards.id" name="fadeIn"> </transition>
+            
             <p v-if="show">{{ flashcards.resposta }}</p>
-          </transition>
-            <b-button v-on:click="show = !show" variant="primary">Resposta</b-button>
-            <hr />
-            <div class="configurarBtn">
-            <b-button class="btn" v-on:click="deletarCard(flashcards.id)"  type="button" variant="outline-danger">
+          </b-card-body>
+          </div>
+          <b-button class="btnResposta" v-on:click="show = !show" variant="primary"
+            >Resposta</b-button
+          >
+          <hr />
+          <b-card-footer>
+            <b-button
+              class="btnAzul"
+              v-on:click="deletarCard(flashcards.id)"
+              type="button"
+              variant="outline-danger"
+            >
               <b-icon-trash2></b-icon-trash2>
               Deletar
             </b-button>
@@ -35,7 +46,7 @@
                 Detalhe</b-button
               >
             </router-link>
-            </div>
+          </b-card-footer>
         </b-card>
       </b-card-group>
     </b-row>
@@ -72,11 +83,8 @@ export default {
       window.setTimeout(() => {
         this.getAllCards();
       }, 1000);
-      
     },
-    percorrerCadaCard(){
-      
-    }
+    percorrerCadaCard() {},
   },
   created() {
     this.getAllCards();
@@ -85,47 +93,74 @@ export default {
 </script>
 
 <style scope>
-h6 {
-  border-color: #4fc08c;
-  border: 2px;
-  border-radius: 5px;
-}
 .containerLista {
   position: relative;
   justify-content: center;
-  
 }
-.configurarBtn{
+.card-subtitle {
+  background-color: #4fc08c;
+  color: #000 !important;
+  margin: 5px;
+}
+.card-footer {
   width: 100%;
-  height: 50px;
+  align-items: bottom;
   display: flex;
-  position: relative;
-  justify-content: space-between;
+  height: auto !important;
+  position: static;
+  padding: 0;
+  margin-bottom: 0px !important;
+  justify-content: center;
 }
-.btn{
-  font-size: 12px;
+.btn {
+  font-size: 11px;
   padding-left: 10px;
   padding-right: 10px;
   height: 35px;
   padding-top: 0;
-  width: 50% ;
 }
-.btnAzul{
+.btnAzul {
   width: 80px !important;
   padding-top: 0;
+}
+hr {
+  padding: 0;
+  margin: 0;
+}
+.btnResposta {
+  margin-bottom: 5px !important;
 }
 .card {
   min-width: 13rem;
   max-width: 13rem;
-  height:300px;
-  margin-top: 25px;
+  max-height: 20rem;
+  min-height: 20rem;
+  margin-top: 10px;
   border-color: #4fc08c;
   transition: transform 0.5s;
   text-align: center;
-  padding-top: 20px;
-  padding-bottom: 0px;
+  padding-top: 0px;
   border-radius: 10px;
   border-width: 5px;
+  position: static;
+}
+.card-body , .overflow-auto{
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 3px;
+  padding-right: 3px;
+  height: 45%;
+  width: 100% !important;
+}
+.overflow-auto{
+  height: 100%;
+}
+.card-body-fixo{
+  position: static;
+   height: 50%;
+}
+.card-body p {
+  font-size: 0.7em;
 }
 .card:hover {
   transform: scale(1.1);

@@ -1,34 +1,40 @@
 {
   "flashcard": [
     {
-      "titulo": "Programadora",
-      "resposta": "Programadora",
+      "titulo": "Ada Lovelace",
+      "resposta": "Ada Lovelace, foi uma matemática e escritora inglesa. Hoje é reconhecida principalmente por ter escrito o primeiro algoritmo para ser processado por uma máquina, a máquina analítica de Charles Babbage.",
       "rotulo": "T.I.",
       "id": 8
     },
     {
-      "titulo": "Inhaeee",
-      "resposta": "",
-      "rotulo": "",
-      "id": 10
-    },
-    {
-      "titulo": "Programadora",
-      "resposta": "Programadora",
-      "rotulo": "",
+      "titulo": "Alan Turing",
+      "resposta": "Foi influente no desenvolvimento da ciência da computação e na formalização do conceito de algoritmo e computação com a máquina de Turing, desempenhando um papel importante na criação do computador moderno. Foi também pioneiro na inteligência artificial e na ciência da computação. É conhecido como o pai da computação.",
+      "rotulo": "Matemática",
       "id": 11
     },
     {
-      "titulo": "texte",
-      "resposta": "Programadora",
-      "rotulo": "",
+      "titulo": "Irmã Mary Keller",
+      "resposta": "Considerada a primeira mulher a receber um doutorado em ciências da computação, Keller se formou na Universidade Washington, na cidade de St. Louis, nos Estados Unidos.",
+      "rotulo": "História",
       "id": 12
     },
     {
-      "titulo": "Programadora",
-      "resposta": "texte",
-      "rotulo": "",
+      "titulo": "Vue.js",
+      "resposta": "Vue.js é um framework JavaScript de código-aberto, focado no desenvolvimento de interfaces de usuário e aplicativos de página única",
+      "rotulo": "Programação",
       "id": 13
+    },
+    {
+      "titulo": "vue",
+      "resposta": "Vue.js é um framework JavaScript de código-aberto, focado no desenvolvimento de interfaces de usuário e aplicativos de página única",
+      "rotulo": "",
+      "id": 14
+    },
+    {
+      "titulo": "vue",
+      "resposta": "vue",
+      "rotulo": "Matemática",
+      "id": 15
     }
   ]
 }
